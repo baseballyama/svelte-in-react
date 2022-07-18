@@ -1,14 +1,20 @@
 import { useEffect, useRef } from "react";
-import SvelteComponent from './SvelteComponent.svelte';
+import SvelteComponent, { WrapperProps, $on } from './SvelteComponent.svelte';
 import "./App.css";
 
-function SvelteComponentWrapper(props: { count: number, onChangeCount: (count: number) => void }) {
+function SvelteComponentWrapper(props: WrapperProps) {
 
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const component = new SvelteComponent({
       target: divRef.current!!,
       props,
+    });
+    
+    // TODO: remove `as`.
+    (component.$on as $on)('change', (event) => {
+      const { type, value } = event.detail;
+      if (type === 'count') props.onChangeCount(value);
     });
     return () => component.$destroy();
   }, [divRef, props]);

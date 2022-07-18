@@ -1,10 +1,12 @@
 <script lang="ts">
-  export let count: number = 1;
-  export let onChangeCount: (count: number) => void;
+  import { createEventDispatcher } from "svelte";
+
+  export let count: Props["count"] = 1;
+  const dispatch = createEventDispatcher<DispatcherPublisher>();
 
   $: doubled = count * 2;
   $: quadrupled = doubled * 2;
-  $: onChangeCount(count);
+  $: dispatch("change", { type: "count", value: count });
 
   function handleClick() {
     count += 1;
