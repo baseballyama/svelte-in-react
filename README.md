@@ -164,3 +164,8 @@ function App() {
 export default App;
 
 ```
+
+### Use dispatcher and type safety between React and Svelte (commit: [1f99db2](https://github.com/baseballyama/svelte-in-react/commit/1f99db2))
+
+Create `SvelteComponent.d.ts` to define interface types between React and Svelte.
+ 
