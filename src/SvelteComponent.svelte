@@ -1,8 +1,10 @@
 <script lang="ts">
   export let count: number = 1;
+  export let onChangeCount: (count: number) => void;
 
   $: doubled = count * 2;
   $: quadrupled = doubled * 2;
+  $: onChangeCount(count);
 
   function handleClick() {
     count += 1;
