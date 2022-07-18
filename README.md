@@ -97,3 +97,70 @@ function App() {
 export default App;
 
 ```
+
+### Sharing state between React and Svelte (commit: [68dc066](https://github.com/baseballyama/svelte-in-react/commit/68dc066))
+
+Implement a way to share state between React and Svelte.
+
+```svelte
+// SvelteComponent.svelte
+
+<script lang="ts">
+  // define props and even handler for changing count.
+  export let count: number = 1;
+  export let onChangeCount: (count: number) => void;
+  $: onChangeCount(count);
+</script>
+```
+
+```tsx
+// SvelteComponentWrapper.tsx
+
+import { useEffect, useRef } from "react";
+import SvelteComponent from './SvelteComponent.svelte';
+import "./App.css";
+
+// add props
++ function SvelteComponentWrapper(props: { count: number, onChangeCount: (count: number) => void }) {
+
+  const divRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const component = new SvelteComponent({
+      target: divRef.current!!,
+      // add props
+      props,
+    });
+    return () => component.$destroy();
+  // add props
+  }, [divRef, props]);
+
+  return (
+    <div className="svelte-wrapper" ref={divRef}></div>
+  );
+}
+
+export default SvelteComponentWrapper;
+```
+
+```tsx
+// App.tsx
+
+import { useState } from 'react';
+import SvelteComponentWrapper from './SvelteComponentWrapper';
+import "./App.css";
+
+function App() {
+  // add state for count (and set them to <SvelteComponentWrapper>)
+  const [count, setCount] = useState(10);
+  return (
+    <div className="App">
+      <h1>This is React world</h1>
+      <p>count: {count}</p>
+      <SvelteComponentWrapper count={count} onChangeCount={setCount} />
+    </div>
+  );
+}
+
+export default App;
+
+```
