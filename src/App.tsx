@@ -1,10 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useRef } from "react";
+import SvelteComponent from './SvelteComponent.svelte';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+
+  const divRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const component = new SvelteComponent({
+      target: divRef.current!!,
+    });
+    return () => component.$destroy();
+  }, [divRef]);
+
   return (
     <div className="App">
+      <div ref={divRef}></div>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,6 +30,7 @@ function App() {
           Learn React
         </a>
       </header>
+      
     </div>
   );
 }
