@@ -58,12 +58,12 @@ export type GetDispatcherPublisherType<
       >
   : never;
 
-type GetSingleDispatcherReceiverDetailType<P, U extends keyof P> = {
+type GetSingleDispatcherSubscriberDetailType<P, U extends keyof P> = {
   type: U;
   value: P[U];
 };
 
-type GetDispatcherReceiverDetailType<
+type GetDispatcherSubscriberDetailType<
   P extends Record<string, unknown>,
   Keys extends keyof P = keyof P,
   T extends unknown = undefined
@@ -71,21 +71,21 @@ type GetDispatcherReceiverDetailType<
   ? T
   : GetLastUnion<Keys> extends Keys
   ? T extends undefined
-    ? GetDispatcherReceiverDetailType<
+    ? GetDispatcherSubscriberDetailType<
         P,
         Exclude<Keys, GetLastUnion<Keys>>,
-        GetSingleDispatcherReceiverDetailType<P, GetLastUnion<Keys>>
+        GetSingleDispatcherSubscriberDetailType<P, GetLastUnion<Keys>>
       >
-    : GetDispatcherReceiverDetailType<
+    : GetDispatcherSubscriberDetailType<
         P,
         Exclude<Keys, GetLastUnion<Keys>>,
-        T | GetSingleDispatcherReceiverDetailType<P, GetLastUnion<Keys>>
+        T | GetSingleDispatcherSubscriberDetailType<P, GetLastUnion<Keys>>
       >
   : never;
 
-export type GetDispatcherReceiverType<P extends Record<string, unknown>> = (
+export type GetDispatcherSubscriberType<P extends Record<string, unknown>> = (
   event: "change",
-  handler: (event: { detail: GetDispatcherReceiverDetailType<P> }) => void
+  handler: (event: { detail: GetDispatcherSubscriberDetailType<P> }) => void
 ) => void;
 
 // ----------------------------------------------------------------------

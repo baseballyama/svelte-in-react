@@ -6,11 +6,12 @@ function SvelteComponentWrapper(props: WrapperProps) {
 
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (!divRef.current) return;
     const component = new SvelteComponent({
-      target: divRef.current!!,
+      target: divRef.current,
       props,
     });
-    
+
     // TODO: remove `as`.
     (component.$on as $on)('change', (event) => {
       const { type, value } = event.detail;
@@ -20,7 +21,7 @@ function SvelteComponentWrapper(props: WrapperProps) {
   }, [divRef, props]);
 
   return (
-    <div className="svelte-wrapper" ref={divRef}></div>
+      <div className="svelte-wrapper" ref={divRef}></div>
   );
 }
 

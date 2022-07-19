@@ -1,14 +1,14 @@
 import {
   GetDispatcherPublisherType,
-  GetDispatcherReceiverType,
+  GetDispatcherSubscriberType,
 } from "./svelte-type-helper";
 
-export declare module "./SvelteComponent.svelte" {
+declare module "./SvelteComponent.svelte" {
   type Props = {
     count: number;
   };
   type DispatcherPublisher = GetDispatcherPublisherType<Props>;
-  type DispatcherReceiver = GetDispatcherReceiverType<Props>;
+  type DispatcherSubscriber = GetDispatcherSubscriberType<Props>;
   type WrapperProps = GetSvelteWrapperProps<Props>;
-  type $on = GetDispatcherReceiverType<Props>;
+  type $on = GetDispatcherSubscriberType<Props>;
 }
