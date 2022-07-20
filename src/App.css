@@ -7,6 +7,10 @@
   align-items: center;
 }
 
-button {
-  margin-bottom: 16px;
+.App > * {
+  margin: 8px 0;
+}
+
+input {
+  min-width: 200px;
 }

@@ -1,7 +1,14 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, getContext } from "svelte";
+  import { Writable } from "svelte/store";
+  import { KEY } from "./context";
 
   export let count: Props["count"] = 1;
+  export const reset: Handlers["reset"] =(() => {
+    count = 0;
+  });
+
+  const context = getContext(KEY) as Writable<string>;
   const dispatch = createEventDispatcher<DispatcherPublisher>();
 
   $: doubled = count * 2;
@@ -15,6 +22,7 @@
 
 <div class="svelte">
   <h1>This is Svelte world</h1>
+  <h2>Context is {$context}</h2>
 
   <button on:click="{handleClick}">
     Count: {count}
