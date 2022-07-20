@@ -2,6 +2,7 @@
   "name": "svelte-in-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://baseballyama.github.io/svelte-in-react-ts",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
