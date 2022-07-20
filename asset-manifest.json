@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/svelte-in-react-ts/static/css/main.2c365cb9.css",
+    "main.js": "/svelte-in-react-ts/static/js/main.09a1ab36.js",
+    "static/js/529.13e7ad65.chunk.js": "/svelte-in-react-ts/static/js/529.13e7ad65.chunk.js",
+    "index.html": "/svelte-in-react-ts/index.html",
+    "main.2c365cb9.css.map": "/svelte-in-react-ts/static/css/main.2c365cb9.css.map",
+    "main.09a1ab36.js.map": "/svelte-in-react-ts/static/js/main.09a1ab36.js.map",
+    "529.13e7ad65.chunk.js.map": "/svelte-in-react-ts/static/js/529.13e7ad65.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c365cb9.css",
+    "static/js/main.09a1ab36.js"
+  ]
+}
