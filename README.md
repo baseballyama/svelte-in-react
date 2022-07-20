@@ -1,6 +1,6 @@
 # Using Svelte from React with TypeScript
 
-This repository was created based on [Tan Li Hau's this video](https://www.youtube.com/watch?v=6MI9mirMh6w).
+This repository was created based on [Tan Li Hau's video](https://www.youtube.com/watch?v=6MI9mirMh6w).
 And I added TypeScript support.
 
 DEMO: https://baseballyama.github.io/svelte-in-react-ts/
