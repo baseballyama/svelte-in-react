@@ -29,6 +29,7 @@ const SvelteComponentWrapper: React.ForwardRefRenderFunction<Handlers, WrapperPr
       if (type === 'count') props.onChangeCount(value);
     });
     return () => component.$destroy();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [divRef]);
 
   useEffect(() => {
